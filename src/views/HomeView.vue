@@ -18,5 +18,14 @@
 </template>
 
 <script setup>
+import { onMounted } from "vue";
+import axios from "axios";
 const letters = "ABCDEFGHIJKLMNOPQRSTUVWXYZ".split("");
+
+onMounted(async () => {
+  const response = await axios.get(
+    "https://www.themealdb.com/api/json/v1/1/list.php?i=list"
+  );
+  console.log(response.data);
+});
 </script>
