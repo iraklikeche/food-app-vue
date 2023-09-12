@@ -20,12 +20,15 @@
 <script setup>
 import { onMounted } from "vue";
 import axios from "axios";
+import { ref } from "vue";
 const letters = "ABCDEFGHIJKLMNOPQRSTUVWXYZ".split("");
+const ingridients = ref([]);
 
 onMounted(async () => {
   const response = await axios.get(
     "https://www.themealdb.com/api/json/v1/1/list.php?i=list"
   );
   console.log(response.data);
+  ingridients.value = response.data;
 });
 </script>
