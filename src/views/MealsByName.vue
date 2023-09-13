@@ -1,5 +1,5 @@
 <template>
-  <div class="p-8">
+  <div class="p-8 pb-0">
     <input
       type="text"
       v-model="keyword"
@@ -14,7 +14,7 @@
       :key="meal.idMeal"
       class="bg-white shadow rounded-xl"
     >
-      <router-link to="/">
+      <router-link :to="{ name: 'mealDetails', params: { id: meal.idMeal } }">
         <img
           :src="meal.strMealThumb"
           :alt="meal.strMeal"

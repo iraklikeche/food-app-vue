@@ -24,6 +24,11 @@ const router = createRouter({
       name: "byIngredients",
       component: () => import("../views/MealsByIngredients.vue"),
     },
+    {
+      path: "/meals/:id",
+      name: "mealDetails",
+      component: () => import("../views/MealDetails.vue"),
+    },
   ],
 });
 
