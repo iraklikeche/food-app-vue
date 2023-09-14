@@ -1,34 +1,38 @@
 <template>
-  <div class="grid grid-cols-1 md:grid-cols-3 gap-5 p-8">
-    <MealItem v-for="meal of meals" :key="meal.idMeal" :meal="meal" />
-  </div>
-  <!-- <div v-if="!meals.length" class="flex justify-center text-gray-600">
-    <h2>There are no meals</h2>
-  </div> -->
+  <Meals :meals="meals" />
 </template>
 
 <script setup>
 import { ref, computed, onMounted } from "vue";
 import { useMealsStore } from "../stores/meals";
-import { useRoute } from "vue-router";
-import axios from "axios";
 
-const route = useRoute();
+import axios from "axios";
+import Meals from "../components/Meals.vue";
+import { useRoute } from "vue-router";
+
 const ingredients = ref("");
 
+const route = useRoute();
 const mealStore = useMealsStore();
 
 const meals = computed(() => mealStore.mealsByIngredients);
 
+const searchMeals = async () => {
+  const response = await axios.get(
+    `https://www.themealdb.com/api/json/v1/1/filter.php?i=${ingredients.value}`
+  );
+
+  console.log(response.data.meals);
+
+  mealStore.setSearchIngredients(response.data.meals);
+};
+
 onMounted(async () => {
   try {
-    const response = await axios.get(
-      "https:/www.themealdb.com/api/json/v1/1/list.php?i=list"
-    );
-
-    ingredients.value = response.data.meals;
-
-    console.log(response.data.meals);
+    ingredients.value = route.params.ingredients;
+    if (ingredients.value) {
+      await searchMeals();
+    }
   } catch (error) {
     console.error("Error during onMounted:", error);
   }

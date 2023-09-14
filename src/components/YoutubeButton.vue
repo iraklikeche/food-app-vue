@@ -1,5 +1,5 @@
 <template>
-  <div>
+  <div v-if="href">
     <a
       :href="href"
       target="_blank"

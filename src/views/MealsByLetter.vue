@@ -8,9 +8,8 @@
       {{ letter }}
     </router-link>
   </div>
-  <div class="grid grid-cols-1 md:grid-cols-3 gap-5 p-8">
-    <MealItem v-for="meal of meals" :key="meal.idMeal" :meal="meal" />
-  </div>
+
+  <Meals :meals="meals" />
 </template>
 
 <script setup>
@@ -19,6 +18,7 @@ import { useMealsStore } from "../stores/meals";
 import { useRoute } from "vue-router";
 import MealItem from "../components/MealItem.vue";
 import axios from "axios";
+import Meals from "../components/Meals.vue";
 
 const letters = "ABCDEFGHIJKLMNOPQRSTUVWXYZ".split("");
 
