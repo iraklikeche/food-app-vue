@@ -20,7 +20,7 @@
       </router-link>
       <router-link
         :to="{
-          name: 'byIngredients',
+          name: 'ingredients',
           params: { ingredients: $route.params.ingredients },
         }"
         class="inline-flex items-center px-2 h-full transition-colors hover:bg-purple-100"
