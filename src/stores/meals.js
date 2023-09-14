@@ -3,14 +3,25 @@ import { defineStore } from "pinia";
 
 export const useMealsStore = defineStore("meals", () => {
   const searchResult = ref([]);
+  const mealsByLetter = ref([]);
+  const mealsByIngredients = ref([]);
 
   const setSearchResults = (results) => {
     searchResult.value = results;
   };
-
-  const logSearchResult = () => {
-    console.log(searchResult.value);
+  const setSearchByLetter = (results) => {
+    mealsByLetter.value = results;
+  };
+  const setSearchIngredients = (results) => {
+    mealsByIngredients.value = results;
   };
 
-  return { searchResult, setSearchResults, logSearchResult };
+  return {
+    searchResult,
+    mealsByLetter,
+    mealsByIngredients,
+    setSearchResults,
+    setSearchByLetter,
+    setSearchIngredients,
+  };
 });

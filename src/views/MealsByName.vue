@@ -18,7 +18,6 @@ import { ref, computed, onMounted } from "vue";
 import { useMealsStore } from "../stores/meals";
 import axios from "axios";
 import { useRoute } from "vue-router";
-import YoutubeButton from "../components/YoutubeButton.vue";
 import MealItem from "../components/MealItem.vue";
 
 const route = useRoute();
