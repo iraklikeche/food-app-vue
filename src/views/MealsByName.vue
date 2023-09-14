@@ -27,13 +27,7 @@
           Lorem ipsum dolor sit amet, consectetur adipisicing elit. At, autem!
         </p>
         <div class="flex items-center justify-between">
-          <a
-            :href="meal.strYoutube"
-            target="_blank"
-            class="px-3 py-2 rounded border-2 text-white border-red-600 bg-red-500 hover:bg-red-600 transition-colors"
-          >
-            Youtube Link
-          </a>
+          <YoutubeButton :href="meal.strYoutube">Youtube Link</YoutubeButton>
         </div>
       </div>
     </div>
@@ -45,6 +39,7 @@ import { ref, computed, onMounted } from "vue";
 import { useMealsStore } from "../stores/meals";
 import axios from "axios";
 import { useRoute } from "vue-router";
+import YoutubeButton from "../components/YoutubeButton.vue";
 
 const route = useRoute();
 

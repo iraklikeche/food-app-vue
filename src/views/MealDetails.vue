@@ -1,5 +1,5 @@
 <template>
-  <div class="w-[800px] mx-auto">
+  <div class="w-[800px] mx-auto p-8">
     <h1 class="text-5xl font-bold mb-5">{{ meal.strMeal }}</h1>
     <img :src="meal.strMealThumb" :alt="meal.strMeal" />
 
@@ -33,6 +33,10 @@
           </template>
         </ul>
       </div>
+
+      <div class="mt-4">
+        <YoutubeButton :href="meal.strYoutube">Youtube</YoutubeButton>
+      </div>
     </div>
   </div>
 </template>
@@ -41,6 +45,7 @@
 import axios from "axios";
 import { ref, onMounted } from "vue";
 import { useRoute } from "vue-router";
+import YoutubeButton from "../components/YoutubeButton.vue";
 
 const route = useRoute();
 const meal = ref({});
