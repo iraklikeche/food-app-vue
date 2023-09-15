@@ -1,9 +1,10 @@
 <template>
-  <div class="flex gap-2 justify-center mt-2">
+  <div class="flex flex-wrap gap-2 justify-center mt-8 mb-8">
     <router-link
       :to="{ name: 'byLetter', params: { letter } }"
       v-for="letter of letters"
       :key="letter"
+      class="w-2 h-2 flex items-center justify-center hover:scale-125 hover:text-orange-500 transition-all"
     >
       {{ letter }}
     </router-link>
@@ -16,7 +17,6 @@
 import { computed, onMounted, ref, watch } from "vue";
 import { useMealsStore } from "../stores/meals";
 import { useRoute } from "vue-router";
-import MealItem from "../components/MealItem.vue";
 import axios from "axios";
 import Meals from "../components/Meals.vue";
 

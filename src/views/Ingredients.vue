@@ -19,13 +19,10 @@
 
 <script setup>
 import { ref, onMounted } from "vue";
-import { useMealsStore } from "../stores/meals";
 
 import axios from "axios";
 
-const ingredients = ref("");
-
-const mealStore = useMealsStore();
+const ingredients = ref([]);
 
 onMounted(async () => {
   try {
