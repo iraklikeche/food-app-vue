@@ -3,7 +3,7 @@
 </template>
 
 <script setup>
-import { ref, computed, onMounted } from "vue";
+import { ref, onMounted } from "vue";
 import { useMealsStore } from "../stores/meals";
 
 import axios from "axios";
@@ -14,8 +14,7 @@ const ingredients = ref("");
 
 const route = useRoute();
 const mealStore = useMealsStore();
-
-console.log("Ingredients:", ingredients.value);
+const meals = ref([]); // Define meals using the ref function
 
 const searchMeals = async () => {
   const response = await axios.get(
@@ -23,7 +22,7 @@ const searchMeals = async () => {
   );
 
   console.log(response.data.meals);
-
+  meals.value = response.data.meals; // Update the meals property with the response data
   mealStore.setSearchIngredients(response.data.meals);
 };
 
