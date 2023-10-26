@@ -15,7 +15,7 @@ const ingredients = ref("");
 const route = useRoute();
 const mealStore = useMealsStore();
 
-const meals = computed(() => mealStore.mealsByIngredients);
+console.log("Ingredients:", ingredients.value);
 
 const searchMeals = async () => {
   const response = await axios.get(

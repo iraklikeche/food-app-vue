@@ -27,7 +27,7 @@ const ingredients = ref([]);
 onMounted(async () => {
   try {
     const response = await axios.get(
-      "https:/www.themealdb.com/api/json/v1/1/list.php?i=list"
+      "https://www.themealdb.com/api/json/v1/1/list.php?i=list"
     );
     ingredients.value = response.data.meals;
   } catch (error) {
